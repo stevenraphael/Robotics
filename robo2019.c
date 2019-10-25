@@ -14,13 +14,13 @@ task main()
 	//Loop Forever
 	while(1 == 1)
 	{
-		if (vexRT[Btn5UXmtr2] == 1){
+		/*if (vexRT[Btn5UXmtr2] == 1){
 			SensorValue(Sol_B) = 0;
 			SensorValue(Sol_A) = 1;
 
 			}else{
 			SensorValue(Sol_B) = 1;
-			SensorValue(Sol_A) = 0;
+			SensorValue(Sol_A) = 0;*/
 
 
 
@@ -28,7 +28,7 @@ task main()
 			if (abs(vexRT[Ch2]) > 15 || abs(vexRT[Ch3]) > 15 || vexRT[Btn7L] == 1 || vexRT[Btn8R] == 1){
 				motor[frontRight] = vexRT[Ch2] * 0.8 - vexRT[Btn7L] * 60 + vexRT[Btn8R] * 60;
 				motor[frontLeft] = vexRT[Ch3] * 0.8 + vexRT[Btn7L] * 60 - vexRT[Btn8R] * 60;
-				motor[backRight] = vexRT[Ch2] * 0.8 + vexRT[Btn7L] * 60 - vexRT[Btn8R] *60;
+				motor[backRight] = vexRT[Ch2] * 0.8 + vexRT[Btn7L] * 60 - vexRT[Btn8R] * 60;
 				motor[backLeft] = vexRT[Ch3] * 0.8 - vexRT[Btn7L] * 60 + vexRT[Btn8R] * 60;
 				//motor[Conv] = vexRT[Btn6U] * 70 + vexRT[Btn6D] * (-70);
 				//
@@ -44,30 +44,34 @@ task main()
 			}
 			//motor[Intake] = vexRT[Btn7UXmtr2] * 256 - vexRT[Btn7DXmtr2] * 256;
 			//motor[Arm]=vexRT[Ch3Xmtr2] * 0.8;
-			if(vexRT[Btn6D]==1 && vexRT[Btn6U]==1){
-				motor[Claw]=-200;
+			if(vexRT[Btn6U]+vexRT[Btn6UXmtr2]+vexRT[Btn6D]+vexRT[Btn6DXmtr2]>=2){
+				motor[Claw]=15;
 			}
 			else{
-				motor[Claw]=vexRT[Btn6D] * 30 - vexRT[Btn6U] * 10;
+				motor[Claw]=100*(vexRT[Btn6U]+vexRT[Btn6UXmtr2])-100*(vexRT[Btn6D]+vexRT[Btn6DXmtr2]);
 			}
-
-			if(vexRT[Btn5U]==1){
-				motor[Arm]=50; //This value probably has to be changed
+			if(vexRT[Btn5U]==1||vexRT[Btn5UXmtr2]==1){
+				motor[Arm]=-50; //This value probably has to be changed
 			}
 			else{
-				motor[Arm]=vexRT[Btn7U] * 256 - vexRT[Btn7D] * 256;
+				if(vexRT[Ch3Xmtr2]>15){
+					motor[Arm]=vexRT[Ch3Xmtr2] * -0.8;
+				}
+				else{
+					motor[Arm]=vexRT[Btn7U] * (-170)-15*vexRT[Btn7D]-15*vexRT[Btn7DXmtr2];
+				}
 			}
 		}
 	}
-}
+
 /* Connections Table
 Victor Number    VEX Brain Port
-   1									 6
-   2									 7
-   3									 8
-   4									 9
-   5									 2
-   6									 3
-   7									 4
-   8									 5
+1									 6
+2									 7
+3									 8
+4									 9
+5									 2
+6									 3
+7									 4
+8									 5
 */
