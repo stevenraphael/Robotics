@@ -37,6 +37,8 @@ task main()
 			}else{
 				motor[backRight] = 0;
 				motor[backLeft] = 0;
+                                motor[frontRight]=0;
+                                motor[frontLeft]=0;
 				//motor[Conv] = 0;
 				//motor[FW1] = 0;
 				//motor[FW2] = 0;
