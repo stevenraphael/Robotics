@@ -18,7 +18,6 @@ task main()
 		/*if (vexRT[Btn5UXmtr2] == 1){
 			SensorValue(Sol_B) = 0;
 			SensorValue(Sol_A) = 1;
-
 			}else{
 			SensorValue(Sol_B) = 1;
 			SensorValue(Sol_A) = 0;*/
@@ -29,8 +28,8 @@ task main()
 			if (abs(vexRT[Ch2]) > 15 || abs(vexRT[Ch3]) > 15 || vexRT[Btn7L] == 1 || vexRT[Btn8R] == 1){
 				motor[backRight] = vexRT[Ch2] * 0.8 + vexRT[Btn7L] * 60 - vexRT[Btn8R] * 60;
 				motor[backLeft] = vexRT[Ch3] * 0.8 - vexRT[Btn7L] * 60 + vexRT[Btn8R] * 60;
-				motor[frontRight] = vexRT[Ch2] * 0.8 - vexRT[Btn7L] * 60 + vexRT[Btn8R] * 60;
-				motor[frontLeft] = vexRT[Ch3] * 0.8 + vexRT[Btn7L] * 60 - vexRT[Btn8R] * 60;
+				motor[frontRight] = vexRT[Ch2] * 0.8 - vexRT[Btn7L] * 120 + vexRT[Btn8R] * 120;
+				motor[frontLeft] = vexRT[Ch3] * 0.8 + vexRT[Btn7L] * 120 - vexRT[Btn8R] * 120;
 				//motor[Conv] = vexRT[Btn6U] * 70 + vexRT[Btn6D] * (-70);
 				//
 				//motor[FW2] = vexRT[Btn6UXmtr2] * 256;
